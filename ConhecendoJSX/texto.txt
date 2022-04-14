@@ -1,0 +1,25 @@
+1-> const elemento = (
+  <h1 className="greeting">
+    Hello, aspirantes!
+  </h1>
+);
+
+2-> const elemento = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, aspirantes!'
+);
+
+3-> Como o createElement espera primeiramente o tipo de tag, suas propriedade de por último suas tags filhas, seria necessário escrever algo como:
+
+const elementoInterno = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+); 
+const elemento = React.createElement(
+'div',
+  {className: 'container'},
+  elementoInterno
+);
+ReactDOM.render(elemento, document.getElementById('root'));
