@@ -1,6 +1,14 @@
 import React from "react";
+import { FaUserSecret } from "react-icons/fa";
 
-function checkAlive(status) {if(status !== "Alive") return (<div className={`img-status ${status}`}>{status === "Dead" ? "MORTO" : "DESCONHECIDO"}</div>)}
+function checkAlive(status) {
+    if (status !== "Alive")
+        return (
+            <div className={`img-status ${status}`}>
+                {status === "Dead" ? "MORTO" : "DESCONHECIDO"}
+            </div>
+        );
+}
 
 function Card({ props }) {
     console.log(props);
@@ -8,11 +16,15 @@ function Card({ props }) {
         <li className={`${props.status} character-card`} key={props.id}>
             <h2 className="character-title">{props.name}</h2>
             <div className={props.status}>
-                <img
-                    className="character-image"
-                    src={props.image}
-                    alt={props.name}
-                />
+                {props.image ? (
+                    <img
+                        className="character-image"
+                        src={props.image}
+                        alt={props.name}
+                    />
+                ) : (
+                    <FaUserSecret className="character-image" />
+                )}
                 {checkAlive(props.status)}
             </div>
             <div className="character-description">

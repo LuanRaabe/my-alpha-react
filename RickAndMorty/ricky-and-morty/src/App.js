@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from "react";
+import getCharacters from "./modules/getCharacters";
 import Card from './components/Card';
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      setLoading(true);
-      let allChars = [];
-      for (let i = 1; i < 8; i++) {
-        const reponse = await fetch(
-          'https://rickandmortyapi.com/api/character/?page=' + i,
-        );
-        const data = await reponse.json();
-        allChars = allChars.concat(data.results);
-      }
+      const allChars = await getCharacters();
       setCharacters(allChars);
     })();
     setLoading(false);
