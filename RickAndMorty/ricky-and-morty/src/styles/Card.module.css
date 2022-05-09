@@ -1,0 +1,71 @@
+.character-card {
+  background-color: #ccc;
+  width: 300px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.Dead::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 13;
+  opacity: 0.3;
+}
+
+.unknown::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0.3;
+}
+
+.img-status {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+}
+
+.img-status.Dead {
+  color: red;
+}
+
+.img-status.unknown {
+  color: black;
+}
+
+.character-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.character-image {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.character-description {
+  font-size: 1rem;
+  margin: 12px 0;
+}
