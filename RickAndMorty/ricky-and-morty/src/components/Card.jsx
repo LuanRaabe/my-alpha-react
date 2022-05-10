@@ -1,39 +1,38 @@
 import React from "react";
 import { FaUserSecret } from "react-icons/fa";
+import {
+    CharacterCard,
+    CharacterTitle,
+    CharacterDescription,
+    ImageWraper,
+    ImageStatus,
+    CharacterImage,
+} from "./styles.jsx";
 
 function checkAlive(status) {
     if (status !== "Alive")
         return (
-            <div className={`img-status ${status}`}>
+            <ImageStatus className={`img-status ${status}`}>
                 {status === "Dead" ? "MORTO" : "DESCONHECIDO"}
-            </div>
+            </ImageStatus>
         );
 }
 
 function Card({ props }) {
-    console.log(props);
     return (
-        <li className={`${props.status} character-card`} key={props.id}>
-            <h2 className="character-title">{props.name}</h2>
-            <div className={props.status}>
+        <CharacterCard className={`${props.status}`} key={props.id}>
+            <CharacterTitle>{props.name}</CharacterTitle>
+            <ImageWraper>
                 {props.image ? (
-                    <img
-                        className="character-image"
-                        src={props.image}
-                        alt={props.name}
-                    />
+                    <CharacterImage src={props.image} alt={props.name} />
                 ) : (
-                    <FaUserSecret className="character-image" />
+                    <FaUserSecret />
                 )}
                 {checkAlive(props.status)}
-            </div>
-            <div className="character-description">
+            </ImageWraper>
+            <CharacterDescription>
                 <p>
-                    <b>Status:</b>{" "}
-                    <span className={`${props.status} text`}>
-                        {" "}
-                        {props.status}
-                    </span>
+                    <b>Status:</b> <span>{props.status}</span>
                 </p>
                 <p>
                     <b>Specie:</b> <span>{props.species}</span>
@@ -41,8 +40,8 @@ function Card({ props }) {
                 <p>
                     <b>Gender:</b> <span>{props.gender}</span>
                 </p>
-            </div>
-        </li>
+            </CharacterDescription>
+        </CharacterCard>
     );
 }
 
